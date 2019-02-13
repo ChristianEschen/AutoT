@@ -10,37 +10,28 @@ import tkinter
 from PIL import Image, ImageTk
 import csv
 import numpy as np
-def key(event):
-    print("pressed", repr(event.char))
 
 class Liker():
-    def __init__(self, path,csv_path):
+    def __init__(self, path,csv_path,user):
         self.path=path
         self.csv_path=csv_path
+        self.user=user
         self.root = tkinter.Tk()
-
-        self.liking()
-        self.disliking()
-        self.label=0
-
+        self.root.title(self.user.name+","+str(self.user.age)+'years')
     def liking(self):
-        self.label=1
-        with open(self.csv_path+'/Label.csv','w') as f1:
+        with open(self.csv_path+'/Label.csv','a') as f1:
             writer=csv.writer(f1, delimiter='\t',lineterminator='\n',)
-            writer.writerow([str(self.label)])
+            writer.writerow([1])
         
-        self.root.destroy
+        self.root.destroy()
         self.root.quit()
     def disliking(self):
-        self.label=0
-        with open(self.csv_path+'/Label.csv','w') as f1:
+        with open(self.csv_path+'/Label.csv','a') as f1:
             writer=csv.writer(f1, delimiter='\t',lineterminator='\n',)
-            writer.writerow([str(self.label)])
+            writer.writerow([0])
          
-        self.root.destroy
+        self.root.destroy()
         self.root.quit()
-    def write_labels(self):
-        print('h')
     def load_image(self):
         mywidth = 600
         pil_img=PIL.Image.open(self.path)
@@ -51,13 +42,17 @@ class Liker():
         panel=tkinter.Frame(self.root)
         panel = tkinter.Label(self.root, image = img)
         panel.pack()
+        text=tkinter.Frame(self.root)
+        text= tkinter.Label(self.root,text='Press "0" for like and "1" for like')
+        text.pack()
         bottomFrame=tkinter.Frame(self.root)
         bottomFrame.pack()
         botton1=tkinter.Button(bottomFrame,text="dislike",fg="red",command=self.disliking)
         botton2=tkinter.Button(bottomFrame,text="like",fg="green",command= self.liking)
         botton1.pack()
         botton2.pack()
-        # self.root.destroy()
+        self.root.bind('0',  lambda event:self.disliking())
+        self.root.bind('1',  lambda event:self.liking())
         self.root.mainloop()
 
 
@@ -125,16 +120,8 @@ for i in range(0,nr_swipes):
         filedata = requests.get(image_url, allow_redirects=True) 
         open(os.path.join(user_dir,str(x)), 'wb').write(filedata.content)
 
-        #GUI_start(os.path.join(user_dir,str(x)))
-        like=Liker(os.path.join(user_dir,str(x)),user_dir_csv)
+        like=Liker(os.path.join(user_dir,str(x)),user_dir_csv,user)
         like.load_image()
-        print('hello')
-       # Label=input("Press Enter to continue...")
-        
 
 
-
-    #    with open(os.path.join(user_dir,str(x)+".jpg"), 'wb') as f:  
-      #      f.write(datatowrite)
-
-        print('done')
+        print( "Image",str(x),"of",user.name)

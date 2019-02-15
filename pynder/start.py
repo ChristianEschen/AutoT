@@ -34,6 +34,10 @@ if os.path.isdir(output_folder_labels_subject)==False:
 my_facebook_id=#
 Lat_copenhagen = 55.6761
 Lon_copenhagen = 12.5683
+Lat_oslo=59.9139
+Lon_oslo=10.7522
+Lon_aarhus=56.1629
+Lat_aarhus = 10.2039
 email = #
 password = #
 MOBILE_USER_AGENT = r"Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19"
@@ -55,7 +59,11 @@ class Liker_subject():
         with open(self.csv_path_subject+'/Label_subject.csv','a') as f1:
             writer=csv.writer(f1, delimiter='\t',lineterminator='\n',)
             writer.writerow([1])
-        self.user.superlike()
+        try:
+            self.user.superlike()
+        except:
+            self.user.like()
+            print('No superlikes remaining!')
         self.root2.destroy()
         self.root2.quit()
     def disliking2(self):
@@ -155,7 +163,7 @@ def get_access_token(email, password):
 get_access_token(email, password) #This is not really safe as you will have your email and password locally visible on your pc    
 session = pynder.Session(facebook_id=my_facebook_id, facebook_token=get_access_token(email,password))
 session.matches() # get users you have already been matched with
-session.update_location(Lat_copenhagen, Lon_copenhagen) # updates latitude and longitude for your profile
+session.update_location(Lat_aarhus, Lon_aarhus) # updates latitude and longitude for your profile
 session.profile  # your profile. If you update its attributes they will be updated on Tinder.
 users = session.nearby_users() # returns a iterable of users nearby
 

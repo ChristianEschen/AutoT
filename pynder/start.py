@@ -10,7 +10,7 @@ import tkinter
 from PIL import Image, ImageTk
 import csv
 import numpy as np
-output_folder = '/home/christian/PYNDER_PROJECT/Mined_data/'
+output_folder = '../data'
 if os.path.isdir(output_folder)==False:
         os.mkdir(output_folder)
 
@@ -31,15 +31,15 @@ if os.path.isdir(output_folder_bio)==False:
 if os.path.isdir(output_folder_labels_subject)==False:
         os.mkdir(output_folder_labels_subject)
 
-my_facebook_id=#
+my_facebook_id="1371605974"
 Lat_copenhagen = 55.6761
 Lon_copenhagen = 12.5683
 Lat_oslo=59.9139
 Lon_oslo=10.7522
 Lon_aarhus=56.1629
 Lat_aarhus = 10.2039
-email = #
-password = #
+email = "jakob.broesboel@gmail.com"
+password = "123qweasd"
 MOBILE_USER_AGENT = r"Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19"
 FB_AUTH = "https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&display=touch&state=%7B%22challenge%22%3A%22IUUkEUqIGud332lfu%252BMJhxL4Wlc%253D%22%2C%220_auth_logger_id%22%3A%2230F06532-A1B9-4B10-BB28-B29956C71AB1%22%2C%22com.facebook.sdk_client_state%22%3Atrue%2C%223_method%22%3A%22sfvc_auth%22%7D&scope=user_birthday%2Cuser_photos%2Cuser_education_history%2Cemail%2Cuser_relationship_details%2Cuser_friends%2Cuser_work_history%2Cuser_likes&response_type=token%2Csigned_request&default_audience=friends&return_scopes=true&auth_type=rerequest&client_id=464891386855067&ret=login&sdk=ios&logger_id=30F06532-A1B9-4B10-BB28-B29956C71AB1&ext=1470840777&hash=AeZqkIcf-NEW6vBd"
 
@@ -163,7 +163,7 @@ def get_access_token(email, password):
 get_access_token(email, password) #This is not really safe as you will have your email and password locally visible on your pc    
 session = pynder.Session(facebook_id=my_facebook_id, facebook_token=get_access_token(email,password))
 session.matches() # get users you have already been matched with
-session.update_location(Lat_aarhus, Lon_aarhus) # updates latitude and longitude for your profile
+session.update_location(Lat_copenhagen, Lon_copenhagen) # updates latitude and longitude for your profile
 session.profile  # your profile. If you update its attributes they will be updated on Tinder.
 users = session.nearby_users() # returns a iterable of users nearby
 

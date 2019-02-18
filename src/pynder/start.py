@@ -10,7 +10,7 @@ import tkinter
 from PIL import Image, ImageTk
 import csv
 import numpy as np
-output_folder = '../data'
+output_folder = '../../data'
 if os.path.isdir(output_folder)==False:
         os.mkdir(output_folder)
 

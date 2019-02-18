@@ -1,2 +1,7 @@
 #data folder
 /data/
+
+#user info
+/src/pynder/login_config.py
+
+/src/pynder/__pycache__/

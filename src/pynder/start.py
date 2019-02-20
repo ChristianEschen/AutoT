@@ -134,29 +134,17 @@ while(True):
     user=next(users)
 
     user.__class__ = Girl
-    hack = user.derp()
+    user.init_dirs()
 
-    user_dir= os.path.join(cfg.Directories.IMAGES,str(uid))
-    user_dir_csv= os.path.join(cfg.Directories.LABELS,str(uid))
-    user_dir_csv_subject= os.path.join(cfg.Directories.LABELS_SUBJECT,str(uid))
-    user_dir_bio= os.path.join(cfg.Directories.BIO,str(uid))
-    
-    if os.path.isdir(user_dir):
-        print('UID already in use!')
-        break
-    os.mkdir(user_dir)
-    os.mkdir(user_dir_csv)
-    os.mkdir(user_dir_csv_subject)
-    os.mkdir(user_dir_bio)
     for x in range(0,len(user._photos)):
         image_url=user._photos[x]["url"]
         filedata = requests.get(image_url, allow_redirects=True) 
-        open(os.path.join(user_dir,str(x)), 'wb').write(filedata.content)
+        open(os.path.join(user.dir_images,str(x)), 'wb').write(filedata.content)
 
-        like=Liker(os.path.join(user_dir,str(x)),user_dir_csv,user_dir_bio,user)
+        like=Liker(os.path.join(user.dir_images,str(x)),user.dir_labels,user.dir_bio,user)
         like.load_image()
         if x==(len(user._photos)-1):
-            like_subject=Liker_subject(user_dir_csv_subject,user)
+            like_subject=Liker_subject(user.dir_subject_labels,user)
             like_subject.desicion()
 
         print( "Image",str(x),"of",user.name)

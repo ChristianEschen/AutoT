@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+mport matplotlib.pyplot as plt
 import pynder
 import robobrowser
 import re
@@ -9,31 +9,6 @@ import PIL
 import tkinter
 from PIL import Image, ImageTk
 import csv
-<<<<<<< HEAD
-import numpy as np
-output_folder = '../../data'
-if os.path.isdir(output_folder)==False:
-        os.mkdir(output_folder)
-
-output_folder_img =os.path.join(output_folder,'images')#'/home/christian/PYNDER_PROJECT/Mined_data/Images'
-output_folder_labels =os.path.join(output_folder,'Labels')#output_folder_labels ='/home/christian/PYNDER_PROJECT/Mined_data/Labels'
-output_folder_labels_subject =os.path.join(output_folder,'Labels_subject')#output_folder_labels ='/home/christian/PYNDER_PROJECT/Mined_data/Labels'
-
-output_folder_bio =os.path.join(output_folder,'bio')#output_folder_bio='/home/christian/PYNDER_PROJECT/Mined_data/Bio'
-if os.path.isdir(output_folder_img)==False:
-        os.mkdir(output_folder_img)
-
-if os.path.isdir(output_folder_labels)==False:
-        os.mkdir(output_folder_labels)
-
-if os.path.isdir(output_folder_bio)==False:
-        os.mkdir(output_folder_bio)
-
-if os.path.isdir(output_folder_labels_subject)==False:
-        os.mkdir(output_folder_labels_subject)
-
-my_facebook_id="1371605974"
-=======
 import login_config
 import config as cfg
 import numpy as np
@@ -44,29 +19,6 @@ misc.init_directories()
 
 
 
-<<<<<<< HEAD
-
-
-my_facebook_id= login_config.User.FACEBOOKID
->>>>>>> 526c559d79d3bb2d69fcb06c95c556b8c629457e
-Lat_copenhagen = 55.6761
-Lon_copenhagen = 12.5683
-Lat_oslo=59.9139
-Lon_oslo=10.7522
-Lon_aarhus=56.1629
-Lat_aarhus = 10.2039
-<<<<<<< HEAD
-email = "jakob.broesboel@gmail.com"
-password = "123qweasd"
-=======
-email = login_config.User.EMAIL
-password = login_config.User.PASSWORD
->>>>>>> 526c559d79d3bb2d69fcb06c95c556b8c629457e
-MOBILE_USER_AGENT = r"Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19"
-FB_AUTH = "https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&display=touch&state=%7B%22challenge%22%3A%22IUUkEUqIGud332lfu%252BMJhxL4Wlc%253D%22%2C%220_auth_logger_id%22%3A%2230F06532-A1B9-4B10-BB28-B29956C71AB1%22%2C%22com.facebook.sdk_client_state%22%3Atrue%2C%223_method%22%3A%22sfvc_auth%22%7D&scope=user_birthday%2Cuser_photos%2Cuser_education_history%2Cemail%2Cuser_relationship_details%2Cuser_friends%2Cuser_work_history%2Cuser_likes&response_type=token%2Csigned_request&default_audience=friends&return_scopes=true&auth_type=rerequest&client_id=464891386855067&ret=login&sdk=ios&logger_id=30F06532-A1B9-4B10-BB28-B29956C71AB1&ext=1470840777&hash=AeZqkIcf-NEW6vBd"
-
-=======
->>>>>>> c40fe2c1ae315c899cb1375338c88739eaa8e82a
 class Liker_subject():
     def __init__(self,csv_path_subject,user):
         self.root2 = tkinter.Tk()
@@ -181,45 +133,9 @@ while(True):
     uid =uuid.uuid4()
     user=next(users)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    user.bio # their biography
-    user.name # their name
-    user.thumbnails #a list of thumbnails of photo URLS
-    user.age # their age
-    user.birth_date # their birth_date
-    user.ping_time # last online
-    user.distance_km # distane from you
-    user.common_connections # friends in common
-    user.get_photos(width=640) # a list of photo URLS with either of these widths ["84","172","320","640"]
-    #user.instagram_username # instagram username
-    #user.instagram_photos # a list of instagram photos with these fields for each photo: 'image','link','thumbnail'
-    user.schools # list of schools
-    user.jobs # list of jobs
-    user_dir= os.path.join(output_folder_img,str(uid))
-    user_dir_csv= os.path.join(output_folder_labels,str(uid))
-    user_dir_csv_subject= os.path.join(output_folder_labels_subject,str(uid))
-    user_dir_bio= os.path.join(output_folder_bio,str(uid))
-=======
-    user_dir= os.path.join(cfg.Directories.IMAGES,str(uid))
-    user_dir_csv= os.path.join(cfg.Directories.LABELS,str(uid))
-    user_dir_csv_subject= os.path.join(cfg.Directories.LABELS_SUBJECT,str(uid))
-    user_dir_bio= os.path.join(cfg.Directories.BIO,str(uid))
->>>>>>> 526c559d79d3bb2d69fcb06c95c556b8c629457e
-    
-    if os.path.isdir(user_dir):
-        print('UID already in use!')
-        break
-    os.mkdir(user_dir)
-    os.mkdir(user_dir_csv)
-    os.mkdir(user_dir_csv_subject)
-    os.mkdir(user_dir_bio)
-=======
     user.__class__ = Girl
     user.init_dirs()
 
->>>>>>> c40fe2c1ae315c899cb1375338c88739eaa8e82a
     for x in range(0,len(user._photos)):
         image_url=user._photos[x]["url"]
         filedata = requests.get(image_url, allow_redirects=True) 
@@ -231,4 +147,4 @@ while(True):
             like_subject=Liker_subject(user.dir_subject_labels,user)
             like_subject.desicion()
 
-        print( "Image",str(x),"of",user.name)
+    print( "Image",str(x),"of",user.name)

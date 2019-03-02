@@ -1,7 +1,10 @@
 #data folder
 /data/
+<<<<<<< HEAD
+=======
 
 #user info
 /src/pynder/login_config.py
 
 /src/pynder/__pycache__/
+>>>>>>> 526c559d79d3bb2d69fcb06c95c556b8c629457e

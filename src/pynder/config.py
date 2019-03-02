@@ -1,10 +1,10 @@
 import os
 
 class Directories:
-    DATA = '../../data'
+    DATA = 'data'
     IMAGES = os.path.join(DATA,'images')
     LABELS = os.path.join(DATA,'labels')
-    LABELS_SUBJECT = os.path.join(DATA,'labels_subject')
+    LABEL_USER = os.path.join(DATA,'label_user')
     BIO = os.path.join(DATA,'bio')
 
 class Locations:
@@ -18,6 +18,13 @@ class Locations:
 class Current_Location:
     LAT = Locations.COPENHAGEN_LAT
     LON = Locations.COPENHAGEN_LON
+
+class Image:
+    WIDTH = 600
+
+class Canvas:
+    WIDTH = 640
+    HEIGHT = 800
 
 class Mobile_User_Agent:
     AGENT = r"Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19"
